@@ -1,5 +1,8 @@
-········································This project provides an automated initialization script and installation package for setting up an Oracle 12c RAC cluster on CentOS 7···················································
-····································································Contents include:························································· ··················································································         
+····This project provides an automated initialization script and installation package for setting up an Oracle 12c RAC cluster on CentOS 7····
+
+This project is a pure shell script and relies on /bin/bash.
+
+This project has only been tested on the CentOS 7 2009 x86-64 operating system; please test it on other operating systems at your own discretion.
 
 This project is:
   A plug-and-play, one-stop solution for configuring and optimizing the initial setup of Oracle 12c R2 12.2.0.1 on a CentOS 7.2009 system
@@ -45,5 +48,65 @@ orain/yum_conf.sh
 
 Coming soon:
 Upgrade and install the Linux 5.4 kernel
+
+
+
+····本项目是centos7系统 安装oracle 12c  rac集群 自动初始化脚本及自动安装项目····
+
+本项目是纯shell 脚本，依赖/bin/bash
+
+本项目仅在centos 7 2009 X86-64操作系统测试使用，其他操作系统请自行测试
+
+本项目为：
+
+傻瓜式、一站式配置并优化ORACLE 12C R2 12.2.0.1 的初始优化 centos 7 2009 系统配置的项目。
+
+本项目特性：
+本项目最大节点数量为9，最小为1；
+本项目使用本项目时节点1的public ip 向后数20个的ip 不可占用占用，请做好ip规划
+节点1的public ip 向前数1个ip是scan ip不可占用
+本项目可以系统安装完成之后直接使用，node1节点配置使用顺序为gen_ip.sh 、gen_host.sh、 orain/rpass、orain/orain_mian.sh
+非node1节点配置使用顺序为gen_ip.sh 、orain/rpass、orain/orain_mian.sh
+如果已经配置好网卡和ip之后则所有节点均不可使用gen_ip.sh
+
+       
+gen_ip.sh：
+          主机网卡自动生成固定ip配置文件
+gen_host.sh：
+          根据节点1的ip地址和节点数量（键入）/etc/hosts文件
+          键入 ORACLE_SID 、GIRD_SID和ORACLE_UNQNAME，会同步至所有节点，且根据hostname 生成.bash_profile 文件
+orain/conf_dir.sh：
+          自动化创建安装路径
+orain/conf_srvr.sh
+          自动化关闭oracle 建议的相关服务（包括关闭防火墙，关闭selinux）
+orain/conf_dir.sh：
+          自动化创建安装路径
+orain/conf_srvr.sh：
+          自动化关闭oracle 建议的相关服务（包括关闭防火墙，关闭selinux）
+orain/conf_sys.sh：
+          根据oracle官方提供的建议值更改系统相关配置（包括：禁用透明大页、计算并优化填写/etc/sysctl.conf和/etc/security/limits.conf相关参数）
+orain/gen_sysc.sh：
+          创建oracle用户和grid用户，并根据/etc/hosts中的内容结合自身网卡ip，配置两用户的.bash_profile   
+orain/gen_sysc.sh：
+          拉取节点1的/etc/hosts到本节点并覆盖
+          重要注意：执行前需要给rpass 文件中配置好节点1的ip和root的密码
+orain/orain_mian.sh
+           主节点初始化安装编排脚本
+orain/rpass
+           需要配置节点1的ip和root密码
+                           如：
+                                      192.168.1.1
+                                      Passw0rd
+orain/yum_conf.sh
+           配置网络yum源，因centos7 官方已停止支持，故使用阿里巴巴的yum源
+
+后续还会增加：
+升级安装linux 5.4内核
+自动化静默安装grid
+自动化静默安装 数据库软件
+
+
+
+
 Automated silent installation of Grid
 Automated silent installation of database software
