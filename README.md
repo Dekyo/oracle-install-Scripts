@@ -11,12 +11,15 @@ Project Features:
 The maximum number of nodes in this project is 9, and the minimum is 1.
 When using this project, the 20 IP addresses immediately following Node 1’s public IP must remain unassigned; please plan your IP addresses accordingly.
 The IP address immediately preceding Node 1’s public IP is the scan IP and must remain unassigned.
+
+
+Usage:
 This project is ready for use immediately after system installation. The configuration sequence for Node 1 is: gen_ip.sh, gen_host.sh, orain/rpass, orain/orain_mian.sh.
   The configuration sequence for nodes other than Node 1 is: gen_ip.sh, orain/rpass, orain/orain_mian.sh.
     If network interfaces and IP addresses have already been configured, gen_ip.sh must not be used on any node.
 
     
-
+Script function explanation:
 gen_ip.sh:
           Automatically generates a configuration file for a static IP address on the host's network interface.
 gen_host.sh:
@@ -66,11 +69,15 @@ Automated silent installation of database software.
 本项目最大节点数量为9，最小为1；
 本项目使用本项目时节点1的public ip 向后数20个的ip 不可占用占用，请做好ip规划 。
 节点1的public ip 向前数1个ip是scan ip不可占用 。
+
+
+使用方法：
 本项目可以系统安装完成之后直接使用，node1节点配置使用顺序为gen_ip.sh 、gen_host.sh、 orain/rpass、orain/orain_mian.sh 。
 非node1节点配置使用顺序为gen_ip.sh 、orain/rpass、orain/orain_mian.sh 。
 如果已经配置好网卡和ip之后则所有节点均不可使用gen_ip.sh 。
 
-       
+
+脚本功能解释：      
 gen_ip.sh：
           主机网卡自动生成固定ip配置文件 。
 gen_host.sh：
